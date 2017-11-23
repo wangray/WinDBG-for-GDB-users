@@ -29,9 +29,18 @@ WinDBG also has `trace` analogues of `step` that will display registers and func
 GDB Command  | WinDBG Command  | Description  | Usage/Example
 --|---|-- | --
 `x*`  | `d*`  |  Dump memory at address | a = ascii chars <br> u = Unicode chars <br> b = byte + ascii <br> w = word (2b) <br> W = word (2b) + ascii <br> d = dword (4b) <br> c = dword (4b) + ascii <br> q = qword (8b) <br> <br> `dd 0x1000000`
-`set {int}addr` | `e*` | Edit memory | `ed 0x1000000 deadbeef` <br><br> a = ascii string <br> za = ascii string (NULL-terminated) <br> u = Unicode string <br> zu = Unicode string (NULL-terminated) <br> `e[a\|u\|za\|zu] addr "String"`
-`p` | `dt/dv`  |  Print variable
+`set {int}addr = ` | `e*` | Edit memory | `ed 0x1000000 deadbeef` <br><br> a = ascii string <br> za = ascii string (NULL-terminated) <br> u = Unicode string <br> zu = Unicode string (NULL-terminated) <br> `e[a\|u\|za\|zu] addr "String"`
+`print`/`p` | `dt/dv`  |  Print variable
 `disasm`  | `u` | Disassemble at address/symbol  
+
+
+## Registers
+
+GDB Command  | WinDBG Command   | Description | Usage/Example
+--|---|--| --
+`info registers` | `r`  |  Show registers | `r Reg1  Reg2` <br> `r Reg:Type` <br> `Type` = data format in which to display the register (i.e.: `r eax:uw`) <br> ib = Signed byte <br> ub = Unsigned byte <br> iw = Signed word (2b) <br> uw = Unsigned word (2b) <br> id = Signed dword (4b) <br> ud = Unsigned dword (4b) <br> iq = Signed qword (8b) <br> uq = Unsigned qword (8b) <br> f = 32-bit floating-point <br> d = 64-bit floating-point
+`set reg =`  |  `r Reg=Value` | Set register |  
+
 
 
 ## Getting information
@@ -39,15 +48,15 @@ GDB Command  | WinDBG Command  | Description  | Usage/Example
 GDB Command  | WinDBG Command   | Description | Usage/Example
 --|---|--| --
 `info proc mappings` | `!address`  |   | Show virtual memory map and permissions
-p | `x` | Examine symbols | `x kernel32!*CreateProcess*`
+`print`/`p` | `x` | Examine symbols | `x kernel32!*CreateProcess*`
 None  | `ln` |  List nearest symbol to address |
-`info registers`  | `r`  |  r Reg1  Reg2 <br> r Reg=Value <br> r Reg:Type |
+`info registers` | `r`  |   | `r Reg1  Reg2` <br> `r Reg=Value` <br> `r Reg:Type`
 `backtrace`/`bt` |  `k` | Stack backtrace  |  
 
 
 ## Other useful commands
-`!peb`
+`!peb` –
 
 
 ## Tips
-WinDBG is installed in vmw
+WinDBG is installed in `C:\Program Files (x86)\Windows Kits\10\Debuggers\x86[64]/`. Add it to your path
