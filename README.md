@@ -47,7 +47,7 @@ GDB Command  | WinDBG Command   | Description | Usage/Example
 
 GDB Command  | WinDBG Command   | Description | Usage/Example
 --|---|--| --
-`info proc mappings` | `!address`  |   | Show virtual memory map and permissions
+`info proc mappings` | `!address`  |  Show virtual memory map and permissions | 
 `print`/`p` | `x` | Examine symbols | `x kernel32!*CreateProcess*`
 None  | `ln` |  List nearest symbol to address |
 `backtrace`/`bt` |  `k` | Stack backtrace  |  
