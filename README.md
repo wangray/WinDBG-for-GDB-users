@@ -31,7 +31,7 @@ GDB Command  | WinDBG Command  | Description  | Usage/Example
 `x*`  | `d*`  |  Dump memory at address | a = ascii chars <br> u = Unicode chars <br> b = byte + ascii <br> w = word (2b) <br> W = word (2b) + ascii <br> d = dword (4b) <br> c = dword (4b) + ascii <br> q = qword (8b) <br> <br> `dd 0x1000000`
 `set {int}addr = ` | `e*` | Edit memory | `ed 0x1000000 deadbeef` <br><br> a = ascii string <br> za = ascii string (NULL-terminated) <br> u = Unicode string <br> zu = Unicode string (NULL-terminated) <br> `e[a\|u\|za\|zu] addr "String"`
 `print`/`p` | `dt/dv`  |  Print variable
-`disasm`  | `u` | Disassemble at address/symbol  
+`disasm`  | `u` | Disassemble at address/symbol  | `u kernel32!CreateProcessAStub`
 
 
 ## Registers
@@ -50,7 +50,6 @@ GDB Command  | WinDBG Command   | Description | Usage/Example
 `info proc mappings` | `!address`  |   | Show virtual memory map and permissions
 `print`/`p` | `x` | Examine symbols | `x kernel32!*CreateProcess*`
 None  | `ln` |  List nearest symbol to address |
-`info registers` | `r`  |   | `r Reg1  Reg2` <br> `r Reg=Value` <br> `r Reg:Type`
 `backtrace`/`bt` |  `k` | Stack backtrace  |  
 
 
