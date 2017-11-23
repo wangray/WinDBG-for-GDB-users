@@ -54,8 +54,8 @@ None  | `ln` |  List nearest symbol to address |
 
 
 ## Other useful commands
-`!peb` –
+`!peb` – Dump Process Environment Block
 
 
 ## Tips
-WinDBG is installed in `C:\Program Files (x86)\Windows Kits\10\Debuggers\x86[64]/`. Add it to your path
+The WinDBG executable is installed in `C:\Program Files (x86)\Windows Kits\10\Debuggers\x86[64]/`. If it's not in your path, add it by going to the `Edit system environment variables` menu, and append to the `Path` variable.
