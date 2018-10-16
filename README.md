@@ -17,12 +17,11 @@ GDB Command  | WinDBG Command  | Description  | Usage/Examples
 GDB Command  | WinDBG Command  | Description
 --|---|--
 `r/run` | `g` <br>  `.restart` | Run program |
-`s/si` | `p`  |  Step into
+`s/si` | `p`  |  Step over
+`n/ni` | `t`  |  Step into
 `finish` |  `pt`  | Step to next return |
 None |  `pc`  | Step to next call |
 None | `pa`  | Step to address  |  
-
-WinDBG also has `trace` analogues of `step` that will display registers and function calls. The prefixes are simply `t` instead of `p`  
 
 ## Variables, Symbols, and Memory
 
@@ -32,6 +31,8 @@ GDB Command  | WinDBG Command  | Description  | Usage/Example
 `set {int}addr = ` | `e*` | Edit memory | `ed 0x1000000 deadbeef` <br><br> a = ascii string <br> za = ascii string (NULL-terminated) <br> u = Unicode string <br> zu = Unicode string (NULL-terminated) <br> `e[a\|u\|za\|zu] addr "String"`
 `print`/`p` | `dt/dv`  |  Print variable | `dt ntdll!_PEB` <br> `dt ntdll!_PEB @$peb`
 `disasm`  | `u` | Disassemble at address/symbol  | `u kernel32!CreateProcessAStub`
+`* (deref)`  | `poi` |  Dereference pointer | `u poi(ebp+4)`
+None  | `x` |  Examine symbols | `x *!` <br> `x /t /v MyDll!*` list symbols in MyDll with data type, symbol type, and size
 
 #### C++ Expression Syntax
 
@@ -43,6 +44,8 @@ GDB Command  | WinDBG Command  | Description  | Usage/Example
 
 ## Registers
 
+Access registers with `@`, like `@eip`.
+
 GDB Command  | WinDBG Command   | Description | Usage/Example
 --|---|--| --
 `info registers` | `r`  |  Show registers | `r Reg1  Reg2` <br> `r Reg:Type` <br> `Type` = data format in which to display the register (i.e.: `r eax:uw`) <br> ib = Signed byte <br> ub = Unsigned byte <br> iw = Signed word (2b) <br> uw = Unsigned word (2b) <br> id = Signed dword (4b) <br> ud = Unsigned dword (4b) <br> iq = Signed qword (8b) <br> uq = Unsigned qword (8b) <br> f = 32-bit floating-point <br> d = 64-bit floating-point
@@ -53,10 +56,12 @@ GDB Command  | WinDBG Command   | Description | Usage/Example
 
 GDB Command  | WinDBG Command   | Description | Usage/Example
 --|---|--| --
-`info proc mappings` | `!address`  |  Show virtual memory map and permissions |
+`info proc mappings` | `!address`  |  Show virtual memory map and permissions | `!address addr`
 `print`/`p` | `x` | Examine symbols | `x kernel32!*CreateProcess*`
 None  | `ln` |  List nearest symbol to address |
 `backtrace`/`bt` |  `k` | Stack backtrace  |  
+  None | `!exchain`  |  View SEH Chain |
+  |   |   |   |  
 
 
 ## Other useful commands
