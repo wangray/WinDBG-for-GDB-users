@@ -21,7 +21,7 @@ GDB Command  | WinDBG Command  | Description
 `n/ni` | `t`  |  Step into
 `finish` |  `pt`  | Step to next return |
 None |  `pc`  | Step to next call |
-None | `pa`  | Step to address  |  
+`u` | `pa`  | Step to address  |  
 
 ## Variables, Symbols, and Memory
 
